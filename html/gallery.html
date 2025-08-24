@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gallery - Sudocelle</title>
+  <link rel="stylesheet" href="../css/gallery.css">
+</head>
+<body>
+  <!-- Sticky Ribbon Navigation -->
+  <nav id="ribbon-nav" class="ribbon-nav">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="policies.html">Policies</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Gallery</h1>
+  </header>
+
+  <!-- Hero Banner with Carousel -->
+  <section class="hero-carousel">
+    <img id="carousel-img" class="carousel-img" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Gallery Image">
+    <div class="carousel-controls">
+      <button class="carousel-btn" onclick="prevImage()">&#8592; Prev</button>
+      <button class="carousel-btn" onclick="nextImage()">Next &#8594;</button>
+    </div>
+    <div id="carousel-caption" style="color:#232526;font-weight:600;font-size:1.1em;">Futuristic Cityscape</div>
+  </section>
+
+  <main>
+    <h2>Featured Gallery</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Tech Art">
+        <p>Tech Art</p>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Chrome Sculpture">
+        <p>Chrome Sculpture</p>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?auto=format&fit=crop&w=400&q=80" alt="Digital Skyline">
+        <p>Digital Skyline</p>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1465101178521-c1a4c8a0a8b7?auto=format&fit=crop&w=400&q=80" alt="Metallic Waves">
+        <p>Metallic Waves</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <small>© 2025 Sudocelle</small>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+    // Sticky Ribbon Show/Hide on Scroll
+    window.addEventListener('DOMContentLoaded', () => {
+      const ribbon = document.getElementById('ribbon-nav');
+      function updateRibbon() {
+        if (window.scrollY > 10) {
+          ribbon.classList.add('visible');
+        } else {
+          ribbon.classList.remove('visible');
+        }
+      }
+      window.addEventListener('scroll', updateRibbon);
+      updateRibbon();
+    });
+
+    // Simple Carousel Logic
+    const images = [
+      {
+        src: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+        caption: 'Futuristic Cityscape'
+      },
+      {
+        src: 'https://images.unsplash.com/photo-1465101178521-c1a4c8a0a8b7?auto=format&fit=crop&w=800&q=80',
+        caption: 'Metallic Waves'
+      },
+      {
+        src: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80',
+        caption: 'Chrome Sculpture'
+      },
+      {
+        src: 'https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?auto=format&fit=crop&w=800&q=80',
+        caption: 'Digital Skyline'
+      }
+    ];
+    let current = 0;
+    function showImage(idx) {
+      const img = document.getElementById('carousel-img');
+      const caption = document.getElementById('carousel-caption');
+      img.src = images[idx].src;
+      caption.textContent = images[idx].caption;
+      gsap.fromTo(img, {opacity:0}, {opacity:1, duration:0.6});
+    }
+    window.prevImage = function() {
+      current = (current - 1 + images.length) % images.length;
+      showImage(current);
+    }
+    window.nextImage = function() {
+      current = (current + 1) % images.length;
+      showImage(current);
+    }
+    window.addEventListener('DOMContentLoaded', () => showImage(current));
+  </script>
+</body>
+</html>
