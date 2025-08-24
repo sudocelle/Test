@@ -47,16 +47,35 @@ if (window.gsap && window.TextPlugin) {
   });
 }
 
-// 6. cloneNode + GSAP Animation (Duplicate and animate)
-function cloneAndAnimate() {
-  const main = document.querySelector('main');
-  if (!main) return;
-  const clone = main.cloneNode(true);
+// 6. CloneNode + GSAP Animation (Hero Banner duplication and animation)
+function heroBannerCloneAnimation() {
+  const banner = document.getElementById('hero-banner');
+  if (!banner) return;
+  const clone = banner.cloneNode(true);
+  clone.id = 'hero-banner-clone';
   clone.style.position = 'absolute';
-  clone.style.top = '60%';
-  clone.style.left = '10%';
+  clone.style.top = '0';
+  clone.style.left = '50%';
+  clone.style.transform = 'translateX(-50%) scale(0.7)';
   clone.style.opacity = '0';
-  document.body.appendChild(clone);
-  gsap.to(clone, { opacity: 1, y: -30, duration: 1, delay: 1 });
+  clone.style.zIndex = '10';
+  clone.style.pointerEvents = 'none';
+  document.getElementById('hero-banner-section').appendChild(clone);
+  gsap.to(clone, {
+    opacity: 1,
+    scale: 1,
+    y: 40,
+    duration: 1.2,
+    ease: 'power2.out',
+    delay: 0.5,
+    onComplete: () => {
+      gsap.to(clone, {
+        y: 0,
+        boxShadow: '0 8px 32px #b0bec5',
+        duration: 0.8,
+        ease: 'power1.inOut'
+      });
+    }
+  });
 }
-window.addEventListener('DOMContentLoaded', cloneAndAnimate);
+window.addEventListener('DOMContentLoaded', heroBannerCloneAnimation);

@@ -47,16 +47,42 @@ main p, main strong {
 	font-size: 1.1em;
 }
 
-#clone-demo {
-	margin-top: 2em;
-	padding: 1em;
-	background: linear-gradient(90deg, #b0bec5 0%, #232526 100%);
-	border-radius: 12px;
-	box-shadow: 0 2px 12px #b0bec5, 0 1px 0 #fff2 inset;
+
+/* Hero Banner Section Styles */
+#hero-banner-section {
+	position: relative;
+	min-height: 220px;
+	margin-bottom: 2em;
+}
+.hero-banner {
+	width: 90%;
+	max-width: 600px;
+	background: linear-gradient(120deg, #b0bec5 0%, #232526 100%);
+	border-radius: 18px;
+	box-shadow: 0 8px 32px #b0bec5, 0 1px 0 #fff2 inset;
+	padding: 2em 2em 1.5em 2em;
+	border: 1px solid #e0e0e0;
 	color: #232526;
 	font-family: inherit;
-	font-weight: 600;
+	font-weight: 700;
+	text-align: center;
+	position: relative;
+	z-index: 2;
+}
+#hero-banner-clone {
+	width: 90%;
+	max-width: 600px;
+	background: linear-gradient(120deg, #b0bec5 0%, #232526 100%);
+	border-radius: 18px;
+	box-shadow: 0 8px 32px #b0bec5, 0 1px 0 #fff2 inset;
+	padding: 2em 2em 1.5em 2em;
 	border: 1px solid #e0e0e0;
+	color: #232526;
+	font-family: inherit;
+	font-weight: 700;
+	text-align: center;
+	z-index: 10;
+	pointer-events: none;
 }
 
 footer {
