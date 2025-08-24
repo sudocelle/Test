@@ -1,3 +1,20 @@
+// Sticky Ribbon Show/Hide on Scroll
+window.addEventListener('DOMContentLoaded', () => {
+  const ribbon = document.getElementById('ribbon-nav');
+  let lastScrollY = window.scrollY;
+  function updateRibbon() {
+    if (window.scrollY > 10) {
+      ribbon.classList.add('visible');
+      gsap.to(ribbon, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' });
+    } else {
+      ribbon.classList.remove('visible');
+      gsap.to(ribbon, { opacity: 0, y: -40, duration: 0.4, ease: 'power2.in' });
+    }
+    lastScrollY = window.scrollY;
+  }
+  window.addEventListener('scroll', updateRibbon);
+  updateRibbon();
+});
 // Sample GSAP Animations & Effects
 // Make sure to include GSAP and plugins in your HTML via CDN
 // Example:

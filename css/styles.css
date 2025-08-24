@@ -1,4 +1,49 @@
 
+/* Sticky Ribbon Navigation Styles */
+.ribbon-nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: linear-gradient(90deg, #b0bec5 0%, #232526 100%);
+	box-shadow: 0 2px 12px #b0bec5;
+	z-index: 100;
+	opacity: 0;
+	pointer-events: none;
+	transform: translateY(-100%);
+	transition: opacity 0.4s, transform 0.4s;
+}
+.ribbon-nav.visible {
+	opacity: 1;
+	pointer-events: auto;
+	transform: translateY(0);
+}
+.ribbon-nav ul {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	list-style: none;
+	margin: 0;
+	padding: 0.7em 0;
+}
+.ribbon-nav li {
+	margin: 0 1.5em;
+}
+.ribbon-nav a {
+	color: #232526;
+	font-weight: 600;
+	text-decoration: none;
+	font-size: 1.1em;
+	letter-spacing: 0.05em;
+	padding: 0.3em 0.8em;
+	border-radius: 6px;
+	transition: background 0.3s, color 0.3s;
+}
+.ribbon-nav a:hover {
+	background: #232526;
+	color: #b0bec5;
+}
+
 
 /* High-Tech Metallic Chrome Theme */
 body {
