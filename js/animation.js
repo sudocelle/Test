@@ -26,21 +26,6 @@ if (window.ScrollTrigger) {
   });
 }
 
-// 3. Flip Animation (Card flip demo)
-function flipDemo() {
-  const card = document.getElementById('flip-card');
-  if (!card || !window.Flip) return;
-  card.addEventListener('click', () => {
-    const state = Flip.getState(card);
-    card.classList.toggle('flipped');
-    Flip.from(state, {
-      duration: 1,
-      ease: 'power1.inOut',
-      absolute: true
-    });
-  });
-}
-window.addEventListener('DOMContentLoaded', flipDemo);
 
 // 4. Draggable Animation (Make footer draggable)
 if (window.Draggable) {
