@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact - Sudocelle</title>
+  <link rel="stylesheet" href="../css/contact.css">
+</head>
+<body>
+  <!-- Sticky Ribbon Navigation -->
+  <nav id="ribbon-nav" class="ribbon-nav">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="policies.html">Policies</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Contact &amp; Connect</h1>
+  </header>
+
+  <main>
+    <h2>Stay Connected</h2>
+    <p>
+      Want updates, newsletters, or to connect with Sudocelle? Fill out the form below or reach us directly!
+    </p>
+    <form style="max-width:400px;margin:2em auto;text-align:left;">
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name" style="width:100%;padding:0.5em;margin-bottom:1em;border-radius:6px;border:1px solid #b0bec5;"><br>
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" style="width:100%;padding:0.5em;margin-bottom:1em;border-radius:6px;border:1px solid #b0bec5;"><br>
+      <label for="message">Message:</label><br>
+      <textarea id="message" name="message" rows="4" style="width:100%;padding:0.5em;border-radius:6px;border:1px solid #b0bec5;"></textarea><br>
+      <button type="submit" class="chrome-btn">Subscribe &amp; Connect</button>
+    </form>
+    <div class="contact-info">
+      <strong>Contact Info:</strong><br>
+      Email: <a href="mailto:support@sudocelle.com" style="color:#b0bec5;">support@sudocelle.com</a><br>
+      GitHub: <a href="https://github.com/sudocelle" target="_blank" style="color:#b0bec5;">github.com/sudocelle</a>
+    </div>
+  </main>
+
+  <footer>
+    <small>© 2025 Sudocelle</small>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+    // Sticky Ribbon Show/Hide on Scroll
+    window.addEventListener('DOMContentLoaded', () => {
+      const ribbon = document.getElementById('ribbon-nav');
+      function updateRibbon() {
+        if (window.scrollY > 10) {
+          ribbon.classList.add('visible');
+        } else {
+          ribbon.classList.remove('visible');
+        }
+      }
+      window.addEventListener('scroll', updateRibbon);
+      updateRibbon();
+    });
+  </script>
+</body>
+</html>
