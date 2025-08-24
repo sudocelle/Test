@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Policies - Sudocelle</title>
+  <link rel="stylesheet" href="../css/policies.css">
+</head>
+<body>
+  <!-- Sticky Ribbon Navigation -->
+  <nav id="ribbon-nav" class="ribbon-nav">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="policies.html">Policies</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Policies &amp; Cookies</h1>
+  </header>
+
+  <main>
+    <h2>Our Policies</h2>
+    <p>
+      Sudocelle is committed to protecting your privacy and ensuring a secure experience. We use cookies to enhance your browsing, analyze site traffic, and personalize content. By continuing to use our site, you agree to our policies and cookie usage.
+    </p>
+    <h2>Cookie Consent</h2>
+    <p>
+      We value your privacy. Please confirm your consent to cookies and our terms to continue accessing the site.
+    </p>
+    <button class="chrome-btn" onclick="acceptCookies()">I Accept &amp; Continue</button>
+    <div id="cookie-message" style="margin-top:1em;color:#b0bec5;font-weight:600;"></div>
+  </main>
+
+  <footer>
+    <small>© 2025 Sudocelle</small>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+    // Sticky Ribbon Show/Hide on Scroll
+    window.addEventListener('DOMContentLoaded', () => {
+      const ribbon = document.getElementById('ribbon-nav');
+      function updateRibbon() {
+        if (window.scrollY > 10) {
+          ribbon.classList.add('visible');
+        } else {
+          ribbon.classList.remove('visible');
+        }
+      }
+      window.addEventListener('scroll', updateRibbon);
+      updateRibbon();
+    });
+    // Cookie consent logic
+    window.acceptCookies = function() {
+      const msg = document.getElementById('cookie-message');
+      msg.textContent = 'Thank you! You may now access all features.';
+      gsap.fromTo(msg, {opacity:0}, {opacity:1, duration:0.7});
+    }
+  </script>
+</body>
+</html>

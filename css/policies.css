@@ -1,0 +1,122 @@
+/* Policies Page - Metallic Chrome Theme */
+body {
+  background: linear-gradient(135deg, #232526 0%, #414345 100%);
+  color: #e0e0e0;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.ribbon-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(90deg, #b0bec5 0%, #232526 100%);
+  box-shadow: 0 2px 12px #b0bec5;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-100%);
+  transition: opacity 0.4s, transform 0.4s;
+}
+.ribbon-nav.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.ribbon-nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0.7em 0;
+}
+.ribbon-nav li {
+  margin: 0 1.5em;
+}
+.ribbon-nav a {
+  color: #232526;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.1em;
+  letter-spacing: 0.05em;
+  padding: 0.3em 0.8em;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
+}
+.ribbon-nav a:hover {
+  background: #232526;
+  color: #b0bec5;
+}
+
+header {
+  background: linear-gradient(90deg, #434343 0%, #000000 100%);
+  box-shadow: 0 4px 24px #0008, 0 1px 0 #fff2 inset;
+  border-bottom: 2px solid #b0bec5;
+  padding: 2em 0 1em 0;
+  text-align: center;
+  opacity: 1;
+}
+
+header h1 {
+  font-size: 2.2em;
+  letter-spacing: 0.08em;
+  color: #e0e0e0;
+  text-shadow: 0 2px 8px #b0bec5, 0 0 2px #fff8;
+  font-weight: 700;
+}
+
+main {
+  max-width: 700px;
+  margin: 3em auto 2em auto;
+  background: linear-gradient(120deg, #232526 60%, #b0bec5 100%);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px #0006, 0 1px 0 #fff2 inset;
+  padding: 2em 2em 2em 2em;
+  border: 1px solid #b0bec5;
+  text-align: center;
+}
+
+main h2 {
+  color: #b0bec5;
+  font-size: 1.6em;
+  margin-bottom: 0.5em;
+}
+main p {
+  color: #e0e0e0;
+  font-size: 1.1em;
+  line-height: 1.7;
+  margin-bottom: 2em;
+}
+
+.chrome-btn {
+  background: linear-gradient(90deg, #b0bec5 0%, #232526 100%);
+  color: #232526;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px #b0bec5, 0 1px 0 #fff2 inset;
+  font-size: 1.1em;
+  font-weight: 600;
+  padding: 0.7em 2em;
+  margin: 1em 0;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+.chrome-btn:hover {
+  background: linear-gradient(90deg, #232526 0%, #b0bec5 100%);
+  color: #e0e0e0;
+  box-shadow: 0 4px 16px #b0bec5, 0 2px 0 #fff2 inset;
+}
+
+footer {
+  background: linear-gradient(90deg, #232526 0%, #b0bec5 100%);
+  color: #fff;
+  text-align: center;
+  padding: 1em 0;
+  font-size: 1em;
+  letter-spacing: 0.08em;
+  box-shadow: 0 -2px 12px #b0bec5;
+  border-top: 2px solid #b0bec5;
+}
