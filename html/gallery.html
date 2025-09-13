@@ -75,6 +75,13 @@
       <div style="text-align:center;margin-bottom:2em;">
         <a href="contact.html" class="chrome-btn" style="display:inline-block;">Submit Your Art</a>
       </div>
+
+      <!-- Animated Chrome Orb Widget -->
+      <div id="chrome-orb-widget" style="display:flex;flex-direction:column;align-items:center;margin:3em 0 2em 0;">
+        <div id="chrome-orb" style="width:90px;height:90px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #fff 0%, #b0bec5 40%, #232526 100%);box-shadow:0 0 32px #b0bec5, 0 0 8px #fff8 inset;position:relative;"></div>
+        <div style="margin-top:1em;color:#b0bec5;font-weight:600;font-size:1.1em;">Chrome Orb Widget</div>
+        <div id="fun-fact" style="margin-top:0.5em;color:#e0e0e0;font-size:1em;text-align:center;max-width:350px;"></div>
+      </div>
     </section>
   </main>
 
@@ -134,6 +141,46 @@
       showImage(current);
     }
     window.addEventListener('DOMContentLoaded', () => showImage(current));
+
+    // Chrome Orb Animation and Fun Fact Widget
+    window.addEventListener('DOMContentLoaded', () => {
+      const orb = document.getElementById('chrome-orb');
+      if (orb) {
+        gsap.to(orb, {
+          y: 20,
+          boxShadow: '0 0 64px #b0bec5, 0 0 16px #fff8 inset',
+          repeat: -1,
+          yoyo: true,
+          duration: 1.6,
+          ease: 'power1.inOut'
+        });
+        gsap.to(orb, {
+          scale: 1.08,
+          repeat: -1,
+          yoyo: true,
+          duration: 1.6,
+          ease: 'sine.inOut'
+        });
+      }
+      // Fun Fact Widget
+      const facts = [
+        'Did you know? Chrome is the most abundant metal in the Earth’s crust after iron and aluminum.',
+        'Fun fact: The word “chrome” comes from the Greek “chroma,” meaning color, due to its colorful compounds.',
+        'Digital art galleries are visited by millions of people every month worldwide!',
+        'Sudocelle’s gallery is curated for a futuristic, high-tech vibe.'
+      ];
+      const factDiv = document.getElementById('fun-fact');
+      if (factDiv) {
+        let idx = 0;
+        function showFact() {
+          factDiv.textContent = facts[idx];
+          gsap.fromTo(factDiv, {opacity:0}, {opacity:1, duration:0.7});
+          idx = (idx + 1) % facts.length;
+        }
+        showFact();
+        setInterval(showFact, 6000);
+      }
+    });
   </script>
 </body>
 </html>
