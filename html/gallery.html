@@ -191,6 +191,25 @@
           </div>
         </div>
       </div>
+
+      <!-- Animated Stats/Counters Section -->
+      <div style="max-width:900px;margin:3em auto 2em auto;padding:1.5em 2em;background:rgba(176,190,197,0.10);border-radius:14px;box-shadow:0 2px 8px #b0bec5;">
+        <h3 style="color:#b0bec5;text-align:center;margin-bottom:1em;">Gallery Stats</h3>
+        <div id="stats-row" style="display:flex;justify-content:center;gap:3em;flex-wrap:wrap;">
+          <div style="flex:1 1 180px;max-width:220px;min-width:160px;display:flex;flex-direction:column;align-items:center;">
+            <div id="stat-artworks" style="font-size:2.5em;color:#e0e0e0;font-weight:700;text-shadow:0 2px 8px #b0bec5;">0</div>
+            <div style="color:#b0bec5;font-size:1.1em;margin-top:0.3em;">Artworks</div>
+          </div>
+          <div style="flex:1 1 180px;max-width:220px;min-width:160px;display:flex;flex-direction:column;align-items:center;">
+            <div id="stat-artists" style="font-size:2.5em;color:#e0e0e0;font-weight:700;text-shadow:0 2px 8px #b0bec5;">0</div>
+            <div style="color:#b0bec5;font-size:1.1em;margin-top:0.3em;">Artists</div>
+          </div>
+          <div style="flex:1 1 180px;max-width:220px;min-width:160px;display:flex;flex-direction:column;align-items:center;">
+            <div id="stat-visitors" style="font-size:2.5em;color:#e0e0e0;font-weight:700;text-shadow:0 2px 8px #b0bec5;">0</div>
+            <div style="color:#b0bec5;font-size:1.1em;margin-top:0.3em;">Visitors</div>
+          </div>
+        </div>
+      </div>
       </div>
     </section>
   </main>
@@ -213,6 +232,29 @@
       }
       window.addEventListener('scroll', updateRibbon);
       updateRibbon();
+    });
+
+    // Animated Stats/Counters
+    window.addEventListener('DOMContentLoaded', () => {
+      function animateStat(id, end, duration) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        gsap.fromTo(el, {textContent: 0}, {
+          textContent: end,
+          duration: duration,
+          ease: 'power1.out',
+          snap: {textContent: 1},
+          onUpdate: function() {
+            el.textContent = Math.floor(el.textContent);
+          },
+          onComplete: function() {
+            el.textContent = end;
+          }
+        });
+      }
+      animateStat('stat-artworks', 28, 2);
+      animateStat('stat-artists', 12, 2.2);
+      animateStat('stat-visitors', 1543, 2.5);
     });
 
     // Simple Carousel Logic
