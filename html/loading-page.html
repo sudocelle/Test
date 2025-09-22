@@ -1,1 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Loading... | Sudocelle</title>
+	<style>
+		body {
+			background: linear-gradient(135deg, #232526 0%, #b0bec5 100%);
+			min-height: 100vh;
+			margin: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-family: 'Segoe UI', Arial, sans-serif;
+			overflow: hidden;
+		}
+		.loader-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		.chrome-orb {
+			width: 90px;
+			height: 90px;
+			border-radius: 50%;
+			background: radial-gradient(circle at 30% 30%, #fff 0%, #b0bec5 40%, #232526 100%);
+			box-shadow: 0 0 32px #b0bec5, 0 0 8px #fff8 inset;
+			position: relative;
+			margin-bottom: 2em;
+			animation: float 1.8s ease-in-out infinite alternate;
+		}
+		@keyframes float {
+			0% { transform: translateY(0); }
+			100% { transform: translateY(24px); }
+		}
+		.loading-text {
+			color: #e0e0e0;
+			font-size: 2em;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-shadow: 0 2px 8px #b0bec5;
+			margin-bottom: 1em;
+			animation: pulse 1.2s infinite alternate;
+		}
+		@keyframes pulse {
+			0% { opacity: 1; }
+			100% { opacity: 0.6; }
+		}
+		.fun-fact {
+			color: #b0bec5;
+			font-size: 1.1em;
+			margin-top: 1.5em;
+			text-align: center;
+			max-width: 350px;
+			opacity: 0.85;
+		}
+	</style>
+</head>
+<body>
+	<div class="loader-container">
+		<div class="chrome-orb"></div>
+		<div class="loading-text" id="loading-text">Loading Sudocelle...</div>
+		<div class="fun-fact" id="fun-fact"></div>
+	</div>
+	<script>
+		// Fun facts to cycle through
+		const facts = [
+			'Did you know? Chrome is the most abundant metal in the Earth’s crust after iron and aluminum.',
+			'Fun fact: The word “chrome” comes from the Greek “chroma,” meaning color.',
+			'Digital art galleries are visited by millions of people every month worldwide!',
+			'Sudocelle’s gallery is curated for a futuristic, high-tech vibe.',
+			'Chrome is used in rocket engines for its heat resistance.',
+			'The first use of chrome plating was in the 1920s for car parts and art deco designs.'
+		];
+		let idx = 0;
+		function showFact() {
+			document.getElementById('fun-fact').textContent = facts[idx];
+			idx = (idx + 1) % facts.length;
+		}
+		showFact();
+		setInterval(showFact, 3500);
+		// Animate loading text dots
+		const loadingText = document.getElementById('loading-text');
+		let dotCount = 0;
+		setInterval(() => {
+			dotCount = (dotCount + 1) % 4;
+			loadingText.textContent = 'Loading Sudocelle' + '.'.repeat(dotCount);
+		}, 600);
+	</script>
+</body>
+</html>
 
