@@ -59,35 +59,75 @@
 	</style>
 </head>
 <body>
-	<div class="loader-container">
-		<div class="chrome-orb"></div>
-		<div class="loading-text" id="loading-text">Loading Sudocelle...</div>
-		<div class="fun-fact" id="fun-fact"></div>
-	</div>
+		<div class="loader-container">
+			<div class="chrome-orb"></div>
+			<div class="loading-text" id="loading-text">Loading Sudocelle...</div>
+			<div class="progress-bar-bg" style="width:220px;height:12px;background:rgba(176,190,197,0.18);border-radius:8px;box-shadow:0 2px 8px #b0bec5;overflow:hidden;margin-bottom:1.2em;">
+				<div id="progress-bar" style="height:100%;width:0%;background:linear-gradient(90deg,#b0bec5 0%,#fff 100%);transition:width 0.3s;"></div>
+			</div>
+			<div class="fun-fact" id="fun-fact"></div>
+			<div class="chrome-quote" id="chrome-quote" style="color:#e0e0e0;font-size:1em;margin-top:1.2em;max-width:340px;text-align:center;opacity:0.7;"></div>
+			<audio id="chime" src="https://cdn.pixabay.com/audio/2022/07/26/audio_124bfae5b2.mp3" preload="auto"></audio>
+		</div>
 	<script>
-		// Fun facts to cycle through
-		const facts = [
-			'Did you know? Chrome is the most abundant metal in the Earth’s crust after iron and aluminum.',
-			'Fun fact: The word “chrome” comes from the Greek “chroma,” meaning color.',
-			'Digital art galleries are visited by millions of people every month worldwide!',
-			'Sudocelle’s gallery is curated for a futuristic, high-tech vibe.',
-			'Chrome is used in rocket engines for its heat resistance.',
-			'The first use of chrome plating was in the 1920s for car parts and art deco designs.'
-		];
-		let idx = 0;
-		function showFact() {
-			document.getElementById('fun-fact').textContent = facts[idx];
-			idx = (idx + 1) % facts.length;
-		}
-		showFact();
-		setInterval(showFact, 3500);
-		// Animate loading text dots
-		const loadingText = document.getElementById('loading-text');
-		let dotCount = 0;
-		setInterval(() => {
-			dotCount = (dotCount + 1) % 4;
-			loadingText.textContent = 'Loading Sudocelle' + '.'.repeat(dotCount);
-		}, 600);
+			// Fun facts to cycle through
+			const facts = [
+				'Did you know? Chrome is the most abundant metal in the Earth’s crust after iron and aluminum.',
+				'Fun fact: The word “chrome” comes from the Greek “chroma,” meaning color.',
+				'Digital art galleries are visited by millions of people every month worldwide!',
+				'Sudocelle’s gallery is curated for a futuristic, high-tech vibe.',
+				'Chrome is used in rocket engines for its heat resistance.',
+				'The first use of chrome plating was in the 1920s for car parts and art deco designs.'
+			];
+			let idx = 0;
+			function showFact() {
+				document.getElementById('fun-fact').textContent = facts[idx];
+				idx = (idx + 1) % facts.length;
+			}
+			showFact();
+			setInterval(showFact, 3500);
+
+			// Animate loading text dots
+			const loadingText = document.getElementById('loading-text');
+			let dotCount = 0;
+			setInterval(() => {
+				dotCount = (dotCount + 1) % 4;
+				loadingText.textContent = 'Loading Sudocelle' + '.'.repeat(dotCount);
+			}, 600);
+
+			// Progress bar animation
+			const progressBar = document.getElementById('progress-bar');
+			let progress = 0;
+			function animateProgress() {
+				progress += Math.random() * 12 + 6;
+				if (progress > 100) progress = 100;
+				progressBar.style.width = progress + '%';
+				if (progress < 100) {
+					setTimeout(animateProgress, 500 + Math.random()*400);
+				} else {
+					// Play chime sound when done
+					const chime = document.getElementById('chime');
+					if (chime) chime.play();
+				}
+			}
+			setTimeout(animateProgress, 600);
+
+			// Chrome/futuristic quotes
+			const quotes = [
+				'“Shine bright like chrome.”',
+				'“The future is polished in chrome.”',
+				'“Art is the reflection of a metallic soul.”',
+				'“In a chrome world, creativity never rusts.”',
+				'“Every pixel deserves a little shine.”'
+			];
+			function showQuote() {
+				const quoteDiv = document.getElementById('chrome-quote');
+				if (quoteDiv) {
+					quoteDiv.textContent = quotes[Math.floor(Math.random()*quotes.length)];
+				}
+			}
+			showQuote();
+			setInterval(showQuote, 7000);
 	</script>
 </body>
 </html>
