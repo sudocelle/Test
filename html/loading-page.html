@@ -59,16 +59,51 @@
 	</style>
 </head>
 <body>
-		<div class="loader-container">
-			<div class="chrome-orb"></div>
-			<div class="loading-text" id="loading-text">Loading Sudocelle...</div>
-			<div class="progress-bar-bg" style="width:220px;height:12px;background:rgba(176,190,197,0.18);border-radius:8px;box-shadow:0 2px 8px #b0bec5;overflow:hidden;margin-bottom:1.2em;">
-				<div id="progress-bar" style="height:100%;width:0%;background:linear-gradient(90deg,#b0bec5 0%,#fff 100%);transition:width 0.3s;"></div>
+			<div class="loader-container">
+				<div class="chrome-orb"></div>
+				<div class="chrome-spinner" style="margin-bottom:1.2em;">
+					<svg width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg">
+						<defs>
+							<linearGradient x1="8.042%" y1="0%" x2="65.682%" y2="23.865%" id="a">
+								<stop stop-color="#fff" stop-opacity="0.7"/>
+								<stop offset="1" stop-color="#b0bec5" stop-opacity="0.9"/>
+							</linearGradient>
+						</defs>
+						<g fill="none" fill-rule="evenodd">
+							<g transform="translate(1 1)">
+								<path d="M36 18c0-9.94-8.06-18-18-18" stroke="url(#a)" stroke-width="3" stroke-linecap="round">
+									<animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1.1s" repeatCount="indefinite"/>
+								</path>
+								<circle fill="#232526" cx="18" cy="18" r="16"/>
+							</g>
+						</g>
+					</svg>
+				</div>
+				<div class="loading-text" id="loading-text">Loading Sudocelle...</div>
+				<div class="progress-bar-bg" style="width:220px;height:12px;background:rgba(176,190,197,0.18);border-radius:8px;box-shadow:0 2px 8px #b0bec5;overflow:hidden;margin-bottom:1.2em;">
+					<div id="progress-bar" style="height:100%;width:0%;background:linear-gradient(90deg,#b0bec5 0%,#fff 100%);transition:width 0.3s;"></div>
+				</div>
+				<div class="fun-fact" id="fun-fact"></div>
+				<div class="chrome-quote" id="chrome-quote" style="color:#e0e0e0;font-size:1em;margin-top:1.2em;max-width:340px;text-align:center;opacity:0.7;"></div>
+				<div class="tip-of-day" id="tip-of-day" style="color:#b0bec5;font-size:1em;margin-top:1.2em;max-width:340px;text-align:center;opacity:0.85;"></div>
+				<div class="shortcut-hint" style="color:#b0bec5;font-size:0.98em;margin-top:0.7em;opacity:0.7;">Tip: Press <span style="background:#232526;color:#b0bec5;padding:2px 6px;border-radius:4px;">Ctrl+Shift+G</span> to jump to the gallery!</div>
+				<audio id="chime" src="https://cdn.pixabay.com/audio/2022/07/26/audio_124bfae5b2.mp3" preload="auto"></audio>
 			</div>
-			<div class="fun-fact" id="fun-fact"></div>
-			<div class="chrome-quote" id="chrome-quote" style="color:#e0e0e0;font-size:1em;margin-top:1.2em;max-width:340px;text-align:center;opacity:0.7;"></div>
-			<audio id="chime" src="https://cdn.pixabay.com/audio/2022/07/26/audio_124bfae5b2.mp3" preload="auto"></audio>
-		</div>
+			// Tip of the Day cycling
+			const tips = [
+				'Tip: Click the chrome orb for a bonus fact!',
+				'Tip: Submit your art to be featured in the next update.',
+				'Tip: Use the navigation ribbon to quickly jump between pages.',
+				'Tip: Try the gallery carousel for more inspiration.',
+				'Tip: Follow us on social media for the latest news.'
+			];
+			let tipIdx = 0;
+			function showTip() {
+				document.getElementById('tip-of-day').textContent = tips[tipIdx];
+				tipIdx = (tipIdx + 1) % tips.length;
+			}
+			showTip();
+			setInterval(showTip, 5000);
 	<script>
 			// Fun facts to cycle through
 			const facts = [
