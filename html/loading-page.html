@@ -4,7 +4,21 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Loading... | Sudocelle</title>
-	<style>
+		<style>
+			.chrome-bg-grid {
+				position: fixed;
+				top: 0; left: 0; width: 100vw; height: 100vh;
+				pointer-events: none;
+				z-index: 0;
+				background-image: linear-gradient(90deg,rgba(176,190,197,0.07) 1px,transparent 1px),
+													linear-gradient(180deg,rgba(176,190,197,0.07) 1px,transparent 1px);
+				background-size: 40px 40px;
+				animation: gridmove 8s linear infinite;
+			}
+			@keyframes gridmove {
+				0% { background-position: 0 0, 0 0; }
+				100% { background-position: 40px 40px, 40px 40px; }
+			}
 		body {
 			background: linear-gradient(135deg, #232526 0%, #b0bec5 100%);
 			min-height: 100vh;
@@ -58,7 +72,8 @@
 		}
 	</style>
 </head>
-<body>
+	<body>
+		<div class="chrome-bg-grid"></div>
 			<div class="loader-container">
 				<div class="chrome-orb"></div>
 				<div class="chrome-spinner" style="margin-bottom:1.2em;">
@@ -87,9 +102,23 @@
 				<div class="chrome-quote" id="chrome-quote" style="color:#e0e0e0;font-size:1em;margin-top:1.2em;max-width:340px;text-align:center;opacity:0.7;"></div>
 				<div class="tip-of-day" id="tip-of-day" style="color:#b0bec5;font-size:1em;margin-top:1.2em;max-width:340px;text-align:center;opacity:0.85;"></div>
 				<div class="shortcut-hint" style="color:#b0bec5;font-size:0.98em;margin-top:0.7em;opacity:0.7;">Tip: Press <span style="background:#232526;color:#b0bec5;padding:2px 6px;border-radius:4px;">Ctrl+Shift+G</span> to jump to the gallery!</div>
-				<audio id="chime" src="https://cdn.pixabay.com/audio/2022/07/26/audio_124bfae5b2.mp3" preload="auto"></audio>
+			<audio id="chime" src="https://cdn.pixabay.com/audio/2022/07/26/audio_124bfae5b2.mp3" preload="auto"></audio>
+			<audio id="orb-sound1" src="https://cdn.pixabay.com/audio/2022/03/15/audio_115b9b6bfa.mp3" preload="auto"></audio>
+			<audio id="orb-sound2" src="https://cdn.pixabay.com/audio/2022/10/16/audio_12b6b1b7b2.mp3" preload="auto"></audio>
+			<audio id="orb-sound3" src="https://cdn.pixabay.com/audio/2022/07/26/audio_124bfae5b2.mp3" preload="auto"></audio>
 			</div>
-			// Tip of the Day cycling
+					// Chrome orb click sound effect
+					document.querySelector('.chrome-orb').addEventListener('click', () => {
+						const sounds = [
+							document.getElementById('orb-sound1'),
+							document.getElementById('orb-sound2'),
+							document.getElementById('orb-sound3')
+						];
+						const s = sounds[Math.floor(Math.random()*sounds.length)];
+						if (s) { s.currentTime = 0; s.play(); }
+					});
+
+					// Tip of the Day cycling
 			const tips = [
 				'Tip: Click the chrome orb for a bonus fact!',
 				'Tip: Submit your art to be featured in the next update.',
